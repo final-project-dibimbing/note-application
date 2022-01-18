@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "../Register/register.module.css";
+import Link from "next/link";
 
 console.log(styles);
 export default function Register() {
@@ -24,9 +25,11 @@ export default function Register() {
               </div>
             </div>
             <div className="checkbox mb-3"></div>
-            <button className="w-100 btn btn-lg btn-primary" type="submit">
-              SignUp
-            </button>
+            <Link href="/App/Home">
+              <button className="w-100 btn btn-lg btn-primary" type="submit">
+                SignUp
+              </button>
+            </Link>
             <p className="mt-5 mb-3 text-muted">EverNoteLite @2022</p>
           </form>
         </main>

@@ -78,7 +78,7 @@ export default function Nav() {
               </li>
             </ul>
             <form className="d-flex">
-              <Link href="/Login/login">
+              <Link href="/Login/Login">
                 <button className="btn btn-outline-success" type="submit">
                   LogIn
                 </button>

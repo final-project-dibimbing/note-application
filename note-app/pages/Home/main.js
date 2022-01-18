@@ -11,7 +11,7 @@ export default function Main() {
           <div className="col-lg-6 mx-auto">
             <p className="lead mb-4">Remember everything and tackle any project with your notes, tasks, and schedule all in one place.</p>
             <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-              <Link href="/Register/register">
+              <Link href="/Register/Register">
                 <button type="button" className="btn btn-success btn-lg px-4 gap-3">
                   Sign up for free
                 </button>
