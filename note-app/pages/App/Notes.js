@@ -3,9 +3,8 @@ import styles from "../../styles/Home.module.css";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import React, { useState } from "react";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { ClassicEditor } from "@ckeditor/ckeditor5-build-classic";
 
+//coba manual pakai state
 export default function Notes() {
   const [state, setState] = useState({
     name: "",
@@ -22,6 +21,7 @@ export default function Notes() {
   };
 
   console.log("STATE", state);
+
   return (
     <div className={styles.container}>
       <Head>

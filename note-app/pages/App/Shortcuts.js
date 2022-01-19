@@ -14,7 +14,7 @@ export default function Shortcuts() {
       <Header />
       <div className={styles.contentcontainer}>
         <div className={styles.contentwrapper}>
-          <p>Ini Adalah SHORTCUTS</p>
+          <p>Ini adalah SHORTCUTS</p>
         </div>
       </div>
     </div>
