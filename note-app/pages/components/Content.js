@@ -1,12 +1,28 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { ClassicEditor } from "@ckeditor/ckeditor5-build-classic";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import styles from "../../styles/Home.module.css";
+import React, { useState } from "react";
 
 export default function Content() {
+  const [state, setState] = useState({
+    content: "",
+  });
+
+  const handleChange = (event, editor) => {
+    const data = editor.getData();
+
+    setState({
+      content: data,
+    });
+    // console.log(data);
+  };
+
+  console.log("STATE", state);
+
   return (
     <div className={styles.contentcontainer}>
       <div className={styles.contentwrapper}>
-        <div className="App">
+        <div className="App" value={state.content}>
           <h2>Using CKEditor 5 build in React</h2>
           <CKEditor
             editor={ClassicEditor}
@@ -15,10 +31,7 @@ export default function Content() {
               // You can store the "editor" and use when it is needed.
               console.log("Editor is ready to use!", editor);
             }}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              console.log({ event, editor, data });
-            }}
+            onChange={handleChange}
             onBlur={(event, editor) => {
               console.log("Blur.", editor);
             }}

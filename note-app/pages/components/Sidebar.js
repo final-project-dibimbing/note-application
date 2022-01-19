@@ -21,8 +21,8 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link href="/App/Shortcuts">
-              <a>Shortcuts</a>
+            <Link href="/App/Saved">
+              <a>Saved</a>
             </Link>
           </li>
           <li>

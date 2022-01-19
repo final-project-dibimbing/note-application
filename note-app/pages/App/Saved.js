@@ -3,7 +3,7 @@ import styles from "../../styles/Home.module.css";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 
-export default function Shortcuts() {
+export default function Saved() {
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +14,7 @@ export default function Shortcuts() {
       <Header />
       <div className={styles.contentcontainer}>
         <div className={styles.contentwrapper}>
-          <p>Ini adalah SHORTCUTS</p>
+          <p>Ini adalah Saved</p>
         </div>
       </div>
     </div>
