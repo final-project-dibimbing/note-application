@@ -1,5 +1,6 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import CKFinder from "@ckeditor/ckeditor5-ckfinder/src/ckfinder";
 import styles from "../../styles/Home.module.css";
 import React, { useState } from "react";
 
@@ -30,6 +31,19 @@ export default function Content() {
             onReady={(editor) => {
               // You can store the "editor" and use when it is needed.
               console.log("Editor is ready to use!", editor);
+            }}
+            config={{
+              // plugins: { CKFinder : {
+              //   uploadUrl: "/uploads",
+              // } },
+              plugins: {
+                ckfinder: {
+                  uploadUrl: "/uploads",
+                },
+              },
+              // ckfinder: {
+              //   uploadUrl: "/uploads",
+              // },
             }}
             onChange={handleChange}
             onBlur={(event, editor) => {
