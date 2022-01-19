@@ -5,8 +5,6 @@ const bodyparser = require("body-parser");
 const multiparty = require("connect-multiparty");
 const MultiparyMiddleware = multiparty({ uploadDir: "./images" });
 
-const morgan = require("morgan");
-
 const PORT = process.env.PORT || 8000;
 
 const app = express();

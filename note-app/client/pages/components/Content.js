@@ -36,14 +36,14 @@ export default function Content() {
               // plugins: { CKFinder : {
               //   uploadUrl: "/uploads",
               // } },
-              plugins: {
-                ckfinder: {
-                  uploadUrl: "/uploads",
-                },
-              },
-              // ckfinder: {
-              //   uploadUrl: "/uploads",
+              // plugins: {
+              //   ckfinder: {
+              //     uploadUrl: "/uploads",
+              //   },
               // },
+              ckfinder: {
+                uploadUrl: "/uploads",
+              },
             }}
             onChange={handleChange}
             onBlur={(event, editor) => {
