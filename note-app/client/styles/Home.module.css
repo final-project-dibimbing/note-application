@@ -125,3 +125,21 @@
   padding: 20px;
   gap: 40px;
 }
+
+.store {
+  width: 700px;
+  display: inline-block;
+  text-align: left;
+}
+
+.buttonwrap {
+  width: 700px;
+  display: inline-block;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.buttonstore {
+  background-color: black;
+  color: white;
+}
