@@ -21,7 +21,7 @@ export default function Login() {
               </div>
             </div>
             <div className="checkbox mb-3"></div>
-            <Link href="/App/Home">
+            <Link href="/App/Create">
               <button className="w-100 btn btn-lg btn-primary" type="submit">
                 Login
               </button>

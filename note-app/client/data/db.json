@@ -1,0 +1,14 @@
+{
+  "notes": {
+    "title": "string",
+    "tags": ["string"],
+    "notebook_id": "string",
+    "create_at": "string",
+    "update_at": "string",
+    "sort": {
+      "name": "string",
+      "update_at": "string",
+      "create_at": "string"
+    }
+  }
+}

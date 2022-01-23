@@ -12,11 +12,6 @@ export default function Saved() {
       </Head>
       <Sidebar />
       <Header />
-      <div className={styles.contentcontainer}>
-        <div className={styles.contentwrapper}>
-          <p>Ini adalah Saved</p>
-        </div>
-      </div>
     </div>
   );
 }

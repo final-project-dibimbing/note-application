@@ -1,0 +1,767 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/sign-up": {
+      "post": {
+        "operationId": "AuthController_signUp",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpReq"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Auth"]
+      }
+    },
+    "/auth/sign-in": {
+      "post": {
+        "operationId": "AuthController_signIn",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Auth"]
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "operationId": "AuthController_me",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Auth"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notebooks/add": {
+      "post": {
+        "operationId": "NotebooksController_add",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNotebooksRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Notebooks"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notebooks/update": {
+      "put": {
+        "operationId": "NotebooksController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateNotebooksRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Notebooks"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notebooks/delete": {
+      "delete": {
+        "operationId": "NotebooksController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Notebooks"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notebooks": {
+      "get": {
+        "operationId": "NotebooksController_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Notebooks"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notebooks/search": {
+      "post": {
+        "operationId": "NotebooksController_search",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchNotebooksRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Notebooks"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notes/add": {
+      "post": {
+        "operationId": "NotesController_add",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNoteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Notes"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notes/update": {
+      "put": {
+        "operationId": "NotesController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateNoteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Notes"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notes/delete": {
+      "delete": {
+        "operationId": "NotesController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Notes"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notes": {
+      "get": {
+        "operationId": "NotesController_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Notes"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/notes/search": {
+      "post": {
+        "operationId": "NotesController_search",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchNoteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Notes"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/tags/add": {
+      "post": {
+        "operationId": "TagsController_add",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddTagRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Tags"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/tags/update": {
+      "put": {
+        "operationId": "TagsController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTagRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Tags"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/tags/delete": {
+      "delete": {
+        "operationId": "TagsController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Tags"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/tags": {
+      "get": {
+        "operationId": "TagsController_get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Tags"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/tags/search": {
+      "post": {
+        "operationId": "TagsController_search",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Tags"],
+        "security": [
+          {
+            "token": []
+          }
+        ]
+      }
+    },
+    "/share/add": {
+      "post": {
+        "operationId": "ShareController_add",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddShareRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Share"]
+      }
+    },
+    "/share/update": {
+      "put": {
+        "operationId": "ShareController_update",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateShareRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Share"]
+      }
+    },
+    "/share/delete": {
+      "delete": {
+        "operationId": "ShareController_delete",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["Share"]
+      }
+    },
+    "/share/get": {
+      "post": {
+        "operationId": "ShareController_get",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["Share"]
+      }
+    }
+  },
+  "info": {
+    "title": "Cats example",
+    "description": "The cats API description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "cats",
+      "description": ""
+    }
+  ],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "token": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "in": "header",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "SignUpReq": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "fullname": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          }
+        },
+        "required": ["email", "password", "fullname", "phone_number"]
+      },
+      "SignInRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": ["email", "password"]
+      },
+      "AddNotebooksRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": ["name"]
+      },
+      "UpdateNotebooksRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "name"]
+      },
+      "listSort": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "examples": ["ASC", "DESC"]
+          },
+          "update_at": {
+            "type": "string",
+            "examples": ["ASC", "DESC"]
+          },
+          "create_at": {
+            "type": "string",
+            "examples": ["ASC", "DESC"]
+          }
+        },
+        "required": ["name", "update_at", "create_at"]
+      },
+      "SearchNotebooksRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/listSort"
+          }
+        },
+        "required": ["name", "sort"]
+      },
+      "AddNoteRequest": {
+        "type": "object",
+        "properties": {
+          "notebook_id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["notebook_id", "title", "content", "tags"]
+      },
+      "UpdateNoteRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["id", "title", "content", "tags"]
+      },
+      "SearchNoteRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notebook_id": {
+            "type": "string"
+          },
+          "create_at": {
+            "type": "string"
+          },
+          "update_at": {
+            "type": "string"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/listSort"
+          }
+        },
+        "required": ["title", "tags", "notebook_id", "create_at", "update_at", "sort"]
+      },
+      "AddTagRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": ["title"]
+      },
+      "UpdateTagRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "title"]
+      },
+      "SearchRequest": {
+        "type": "object",
+        "properties": {
+          "sort": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "count": {
+            "type": "boolean"
+          }
+        },
+        "required": ["sort", "title", "count"]
+      },
+      "AddShareRequest": {
+        "type": "object",
+        "properties": {
+          "notebook_id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": ["notebook_id", "title", "content"]
+      },
+      "UpdateShareRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "title", "content"]
+      }
+    }
+  }
+}

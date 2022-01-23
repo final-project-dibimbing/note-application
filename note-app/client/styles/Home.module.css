@@ -143,3 +143,25 @@
   background-color: black;
   color: white;
 }
+
+.field {
+  margin-top: 20;
+  margin-bottom: 20;
+  display: block;
+}
+
+.btn {
+  font-size: 60;
+  background-color: violet;
+}
+
+.title {
+  text-decoration: "underline";
+  margin-bottom: 20;
+}
+
+.field {
+  margin-top: 20;
+  margin-bottom: 20;
+  display: block;
+}
