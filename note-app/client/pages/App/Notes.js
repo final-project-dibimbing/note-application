@@ -9,20 +9,22 @@ import NoteCard from "../components/NoteCard";
 export default function Notes() {
   const [notes, setNotes] = useState([]);
 
+  //using useEffect to connect json-server
   useEffect(() => {
-    fetch("")
-      .then((res) => res.json())
+    fetch("http://localhost:3000/notes")
+      .then((res) => res.json()) //promises
       .then((data) => setNotes(data));
   }, []);
 
-  const handleDelete = async (id) => {
-    await fetch("" + id, {
-      method: "DELETE",
-    });
+  // const handleDelete = async (id) => {
+  //   await fetch("" + id, {
+  //     method: "DELETE",
+  //   });
 
-    const newNotes = notes.filter((note) => note.id != id);
-    setNotes(newNotes);
-  };
+  //   //
+  //   const newNotes = notes.filter((note) => note.id != id);
+  //   setNotes(newNotes);
+  // };
 
   return (
     <div className={styles.container}>
@@ -34,13 +36,9 @@ export default function Notes() {
       <Header />
       <div className={styles.contentcontainer}>
         <div className={styles.contentwrapper}>
-          <Grid container spacing={3}>
-            {notes.map((note) => (
-              <Grid item key={note.id} xs={12} ms={6} lg={4}>
-                <NoteCard note={note} handleDelete={handleDelete} />
-              </Grid>
-            ))}
-          </Grid>
+          {notes.map((note) => {
+            <p key={note.id}>{note.title}</p>;
+          })}
         </div>
       </div>
     </div>

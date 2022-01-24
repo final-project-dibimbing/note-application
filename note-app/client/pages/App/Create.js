@@ -1,6 +1,8 @@
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import Radio from "@mui/material/Radio";
+import { RadioGroup } from "@mui/material";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Sidebar from "../components/Sidebar";
@@ -16,6 +18,7 @@ export default function Home() {
   const [titleError, setTitleError] = useState(false);
   const [notesError, setNotesError] = useState(false);
   const [category, setCategory] = useState("");
+
   //handle
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,9 +34,9 @@ export default function Home() {
     }
 
     if (title && notes) {
-      fetch("", {
+      fetch("http://localhost:3000/notes", {
         method: "POST",
-        body: JSON.stringify({ title, details, category }),
+        body: JSON.stringify({ title, content, category }),
       });
     }
   };
@@ -62,9 +65,9 @@ export default function Home() {
                   <FormLabel>Category</FormLabel>
                   <RadioGroup value={category} onBhange={(e) => setCategory(e.target)}>
                     <FormControlLabel value="todo" control={<Radio />} label="Todo" />
-                    <FormControlLabel value="diary" control={<Radio />} label="Todo" />
-                    <FormControlLabel value="reminder" control={<Radio />} label="Todo" />
-                    <FormControlLabel value="other" control={<Radio />} label="Todo" />
+                    <FormControlLabel value="diary" control={<Radio />} label="Diary" />
+                    <FormControlLabel value="reminder" control={<Radio />} label="Reminder" />
+                    <FormControlLabel value="other" control={<Radio />} label="Other" />
                   </RadioGroup>
                 </FormControl>
 
