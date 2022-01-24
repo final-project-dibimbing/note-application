@@ -1,20 +1,33 @@
 import Image from "next/image";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import { IconButton } from "@mui/material/IconButton";
+import { DeleteOutlined } from "@mui/material/Icon";
 import styles from "../../styles/Home.module.css";
+import { Typography } from "@mui/material";
 
-export default function NoteCard() {
+export default function NoteCard({ note, handleDelete }) {
   return (
     <div className={styles.contentcontainer}>
       <div className={styles.contentwrapper}>
-        <div className="card" style="width: 18rem;">
-          <Image src="/gambar1.png" className="d-block mx-lg-auto img-fluid" alt="Gambar Utama" width={700} height={500} loading="lazy" />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
-          </div>
-        </div>
+        <Card>
+          <CardHeader
+            action={
+              <IconButton onClick={() => handleDelete(note.id)}>
+                <DeleteOutlined />
+              </IconButton>
+            }
+            title={note.title}
+            subheader={note.category}
+          />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary">
+              {note.content}
+            </Typography>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

@@ -1,14 +1,22 @@
 {
-  "notes": {
-    "title": "string",
-    "tags": ["string"],
-    "notebook_id": "string",
-    "create_at": "string",
-    "update_at": "string",
-    "sort": {
-      "name": "string",
-      "update_at": "string",
-      "create_at": "string"
+  "notes": [
+    {
+      "title": "Judul",
+      "content": "Lorem ipsum....",
+      "category": "reminder",
+      "id": 1
+    },
+    {
+      "title": "Judul",
+      "content": "Lorem ipsum....",
+      "category": "todo",
+      "id": 2
+    },
+    {
+      "title": "Judul",
+      "content": "Lorem ipsum....",
+      "category": "other",
+      "id": 3
     }
-  }
+  ]
 }
