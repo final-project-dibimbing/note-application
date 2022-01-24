@@ -12,7 +12,9 @@ export default function Register() {
   const [phone, setPhone] = useState("");
 
   //handler
-  const registerAccount = async () => {
+  const registerAccount = async (e) => {
+    e.preventDefault()
+    console.log("sudah berhasil masuk di sini")
     const register = await axios.post(`http://api.saltnote.my.id/auth/sign-up`, {
       email: email,
       password: password,
@@ -31,24 +33,24 @@ export default function Register() {
             <Image src="/rhino.jpg" alt="logo" width={100} height={100} />
             <h1 className="h3 mb-3 fw-normal">Please Fill the Blank</h1>
             <div className="form-floating">
-              <div class="input-group ">
-                <input type="email" class="form-control" placeholder="Email" aria-label="email" aria-describedby="addon-wrapping" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <div className="input-group ">
+                <input type="email" className="form-control" placeholder="Email" aria-label="email" aria-describedby="addon-wrapping" value={email} onChange={(e) => setEmail(e.target.value)} />
               </div>
             </div>
             <div className="form-floating">
-              <div class="input-group flex-nowrap">
-                <input type="password" class="form-control" placeholder="Password" aria-label="password" aria-describedby="addon-wrapping" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <div className="input-group flex-nowrap">
+                <input type="password" className="form-control" placeholder="Password" aria-label="password" aria-describedby="addon-wrapping" value={password} onChange={(e) => setPassword(e.target.value)} />
               </div>
-              <div class="input-group ">
-                <input type="text" class="form-control" placeholder="Fullname" aria-label="fullname" aria-describedby="addon-wrapping" value={fullname} onChange={(e) => setFullname(e.target.value)} />
+              <div className="input-group ">
+                <input type="text" className="form-control" placeholder="Fullname" aria-label="fullname" aria-describedby="addon-wrapping" value={fullname} onChange={(e) => setFullname(e.target.value)} />
               </div>
-              <div class="input-group ">
-                <input type="text" class="form-control" placeholder="Phone" aria-label="phone" aria-describedby="addon-wrapping" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <div className="input-group ">
+                <input type="text" className="form-control" placeholder="Phone" aria-label="phone" aria-describedby="addon-wrapping" value={phone} onChange={(e) => setPhone(e.target.value)} />
               </div>
             </div>
             <div className="checkbox mb-3"></div>
             {/* <Link href="/App/Home"> */}
-            <button className="w-100 btn btn-lg btn-primary" type="submit" onClick={registerAccount()}>
+            <button className="w-100 btn btn-lg btn-primary" type="submit" onClick={(e)=> registerAccount(e)}>
               SignUp
             </button>
             {/* </Link> */}
