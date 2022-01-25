@@ -63,7 +63,7 @@ export default function Home() {
 
                 <FormControl className={styles.field}>
                   <FormLabel>Category</FormLabel>
-                  <RadioGroup value={category} onBhange={(e) => setCategory(e.target)}>
+                  <RadioGroup value={category} onChange={(e) => setCategory(e.target)}>
                     <FormControlLabel value="todo" control={<Radio />} label="Todo" />
                     <FormControlLabel value="diary" control={<Radio />} label="Diary" />
                     <FormControlLabel value="reminder" control={<Radio />} label="Reminder" />

@@ -12,14 +12,14 @@ export default function Register() {
   const [phone, setPhone] = useState("");
 
   //handler
-  const registerAccount = async (e) => {
-    e.preventDefault()
-    console.log("sudah berhasil masuk di sini")
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    console.log("sudah berhasil masuk di sini");
     const register = await axios.post(`http://api.saltnote.my.id/auth/sign-up`, {
       email: email,
       password: password,
       fullname: fullname,
-      phone: phone,
+      phone_number: phone,
     });
     console.log(register);
     alert("Akun berhasil di daftarkan");
@@ -50,7 +50,7 @@ export default function Register() {
             </div>
             <div className="checkbox mb-3"></div>
             {/* <Link href="/App/Home"> */}
-            <button className="w-100 btn btn-lg btn-primary" type="submit" onClick={(e)=> registerAccount(e)}>
+            <button className="w-100 btn btn-lg btn-primary" type="submit" onClick={(e) => handleRegister(e)}>
               SignUp
             </button>
             {/* </Link> */}
