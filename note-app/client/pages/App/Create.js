@@ -1,84 +1,69 @@
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
-import Radio from "@mui/material/Radio";
-import { RadioGroup } from "@mui/material";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import TextField from "@mui/material/TextField";
 import { useState } from "react";
-import { FormControl, FormControlLabel, FormLabel } from "@mui/material";
+import axios from "axios";
 
 export default function Home() {
-  //init
   const [title, setTitle] = useState("");
-  const [notes, setNotes] = useState("");
-  const [titleError, setTitleError] = useState(false);
-  const [notesError, setNotesError] = useState(false);
-  const [category, setCategory] = useState("");
+  const [content, setContent] = useState("");
 
-  //handle
-  const handleSubmit = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
-    setTitleError(false);
-    setNotesError(false);
 
-    if (title == "") {
-      setTitleError(true);
-    }
+    // console.log(localStorage.getItem("token"));
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
 
-    if (title == "") {
-      setNotesError(true);
-    }
+    const bodyParameters = {
+      notebook_id: 0,
+      title: title,
+      content: content,
+      tags: [],
+    };
 
-    if (title && notes) {
-      fetch("http://localhost:3000/notes", {
-        method: "POST",
-        body: JSON.stringify({ title, content, category }),
-      });
-    }
+    const savenote = await axios
+      .post(`http://api.saltnote.my.id/notes/add`, bodyParameters, config)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch();
   };
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Home</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Sidebar />
-      <Header />
-      <div className={styles.contentcontainer}>
-        <div className={styles.contentwrapper}>
-          <Container>
-            <div>
-              <Typography className={styles.title} color="textSeconadry" component="h2" gutterBottom>
-                Create New
-              </Typography>
+    <>
+      <div className={styles.container}>
+        <Head>
+          <title>Home</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Sidebar />
+        <Header />
+        <div className={styles.contentcontainer}>
+          <div className={styles.contentwrapper}>
+            {/* Wrapper */}
+            <div className="input-group mb-3">
+              {/* Judul */}
+              <span className="input-group-text" id="basic-addon1">
+                Title
+              </span>
+              <input type="text" value={title} className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" onChange={(e) => setTitle(e.target.value)} />
 
-              <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-                <TextField onChange={(e) => setTitle(e.target.value)} className={styles.field} label="Title" variant="outlined" color="secondary" fullWidth required error={titleError} />
-                <TextField onChange={(e) => setNotes(e.target.value)} className={styles.field} label="Notes" variant="outlined" color="secondary" multiline rows={7} fullWidth required error={notesError} />
-
-                <FormControl className={styles.field}>
-                  <FormLabel>Category</FormLabel>
-                  <RadioGroup value={category} onChange={(e) => setCategory(e.target)}>
-                    <FormControlLabel value="todo" control={<Radio />} label="Todo" />
-                    <FormControlLabel value="diary" control={<Radio />} label="Diary" />
-                    <FormControlLabel value="reminder" control={<Radio />} label="Reminder" />
-                    <FormControlLabel value="other" control={<Radio />} label="Other" />
-                  </RadioGroup>
-                </FormControl>
-
-                <Button className={styles.btn} type="submit" color="secondary" variant="contained">
-                  Submit
-                </Button>
-              </form>
+              {/* Notes */}
+              <div className="input-group">
+                <span className="input-group-text">Notes</span>
+                <textarea className="form-control" value={content} aria-label="With textarea" onChange={(e) => setContent(e.target.value)}></textarea>
+              </div>
+              {/* Button */}
+              <button className="w-20 btn btn-lg btn-primary" type="submit" onClick={(e) => handleSave(e)}>
+                Save
+              </button>
             </div>
-          </Container>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

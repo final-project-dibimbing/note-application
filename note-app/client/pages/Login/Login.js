@@ -3,7 +3,6 @@ import styles from "../Login/login.module.css";
 import Link from "next/link";
 import axios from "axios";
 import { useState } from "react";
-import { History } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,6 +16,7 @@ export default function Login() {
       email: email,
       password: password,
     };
+
     console.log(data);
     //send data to server
     const login = await axios.post(`http://api.saltnote.my.id/auth/sign-in`, data).then((response) => {
@@ -26,6 +26,7 @@ export default function Login() {
       window.location.assign("http://localhost:3000//App/Create");
     });
   };
+
   return (
     <>
       <body className={styles["text-center"]}>
