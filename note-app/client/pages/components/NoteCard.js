@@ -1,33 +1,39 @@
-import Image from "next/image";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import { IconButton } from "@mui/material/IconButton";
-import { DeleteOutlined } from "@mui/material/Icon";
 import styles from "../../styles/Home.module.css";
-import { Typography } from "@mui/material";
+import axios from "axios";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export default function NoteCard({ note, handleDelete }) {
+export default function NoteCard({ post }) {
+  const linkUpdate = `/App/Update/${post.id}`;
+  //axios.delete(url[, config])
+  // const [isUpdate, setIsUpdate] = useState({ id: null, status: false });
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+
+    const update = await axios
+      .delete(`http://api.saltnote.my.id/notes/delete?id=${post.id}`, config)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch();
+  };
+
   return (
     <div className={styles.contentcontainer}>
       <div className={styles.contentwrapper}>
-        <Card>
-          <CardHeader
-            action={
-              <IconButton onClick={() => handleDelete(note.id)}>
-                <DeleteOutlined />
-              </IconButton>
-            }
-            title={note.title}
-            subheader={note.category}
-          />
-          <CardContent>
-            <Typography variant="body2" color="textSecondary">
-              {note.content}
-            </Typography>
-          </CardContent>
-        </Card>
+        <div>
+          <h2>{post.title}</h2>
+          <p>{post.content}</p>
+          <Link href={linkUpdate}>
+            <button>Update</button>
+          </Link>
+          <button onClick={(e) => handleDelete(e)}>Delete</button>
+        </div>
       </div>
     </div>
   );

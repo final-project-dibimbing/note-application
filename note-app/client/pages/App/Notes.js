@@ -2,29 +2,28 @@ import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
+import { useEffect } from "react";
+import { useState } from "react";
 import NoteCard from "../components/NoteCard";
+import axios from "axios";
 
 export default function Notes() {
-  const [notes, setNotes] = useState([]);
+  const [post, setPost] = useState([]);
 
-  //using useEffect to connect json-server
   useEffect(() => {
-    fetch("http://localhost:3000/notes")
-      .then((res) => res.json()) //promises
-      .then((data) => setNotes(data));
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+
+    axios
+      .get(`http://api.saltnote.my.id/notes`, config)
+      .then((res) => {
+        setPost(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
-
-  // const handleDelete = async (id) => {
-  //   await fetch("" + id, {
-  //     method: "DELETE",
-  //   });
-
-  //   //
-  //   const newNotes = notes.filter((note) => note.id != id);
-  //   setNotes(newNotes);
-  // };
 
   return (
     <div className={styles.container}>
@@ -36,9 +35,17 @@ export default function Notes() {
       <Header />
       <div className={styles.contentcontainer}>
         <div className={styles.contentwrapper}>
-          {notes.map((note) => {
-            <p key={note.id}>{note.title}</p>;
-          })}
+          {/* Grid */}
+
+          <div className="row">
+            {post.map((post) => (
+              <div className="col-lg-4" key={post.id}>
+                {/* {post.content} */}
+                <NoteCard post={post} />
+                {/* <button>update</button> */}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
