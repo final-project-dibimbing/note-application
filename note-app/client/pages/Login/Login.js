@@ -3,8 +3,11 @@ import styles from "../Login/login.module.css";
 import Link from "next/link";
 import axios from "axios";
 import { useState } from "react";
+import { browserHistory } from 'react-router'
+import { useRouter } from 'next/router'
 
 export default function Login() {
+  const router = useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,8 +25,8 @@ export default function Login() {
     const login = await axios.post(`http://api.saltnote.my.id/auth/sign-in`, data).then((response) => {
       //set token on localStorage
       console.log(response);
-      localStorage.setItem("token", response.data.data.token);
-      window.location.assign("http://localhost:3000//App/Create");
+      localStorage.setItem("token", response.data.data.token);      
+      router.push("/App/Create")
     });
   };
 
