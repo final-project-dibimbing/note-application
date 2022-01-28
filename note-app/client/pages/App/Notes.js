@@ -2,49 +2,50 @@ import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import React, { useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import NoteCard from "../components/NoteCard";
+import axios from "axios";
 
-//coba manual pakai state
 export default function Notes() {
-  const [state, setState] = useState({
-    name: "",
-    content: "",
-  });
+  const [post, setPost] = useState([]);
 
-  const handleChange = (event) => {
-    const target = event.target;
-    const { name, value } = target;
+  useEffect(() => {
+    const config = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
 
-    setState({
-      [name]: value,
-    });
-  };
-
-  console.log("STATE", state);
+    axios
+      .get(`http://api.saltnote.my.id/notes`, config)
+      .then((res) => {
+        setPost(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Notes</title>
+        <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Sidebar />
       <Header />
       <div className={styles.contentcontainer}>
         <div className={styles.contentwrapper}>
-          <form className="form-group">
-            <div className="form-group">
-              <label>Title Name</label>
-              <input type="text" name="name" value={state.name} onChange={handleChange} placeholder="Enter Title" className="form-control" required />
-            </div>
-            <div className="form-group">
-              <label>Note</label>
-              <textarea cols="45" type="text" rows="15" name="content" value={state.content} onChange={handleChange} placeholder="Enter Message" className="form-control" />
-            </div>
-            <div className="form-group">
-              <input type="submit" name="submit" className="btn btn-secondary" />
-            </div>
-          </form>
+          {/* Grid */}
+
+          <div className="row">
+            {post.map((post) => (
+              <div className="col-lg-4" key={post.id}>
+                {/* {post.content} */}
+                <NoteCard post={post} />
+                {/* <button>update</button> */}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

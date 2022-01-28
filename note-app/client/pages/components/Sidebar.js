@@ -9,25 +9,26 @@ export default function Sidebar() {
       </div>
       <div className={styles.wrapper}>
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search by title" aria-label="Search" />
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search by tag" aria-label="Search" />
         <ul>
           <li>
-            <Link href="/App/Home">
-              <a>Home</a>
+            <Link href="/App/Create">
+              <a>Create</a>
             </Link>
           </li>
           <li>
             <Link href="/App/Notes">
-              <a>Notes</a>
+              <a>MyNotes</a>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/App/Saved">
               <a>Saved</a>
             </Link>
-          </li>
+          </li> */}
           <li>
-            <Link href="/App/Trash">
-              <a>Trash</a>
+            <Link href="/App/Rich">
+              <a>RichEditor</a>
             </Link>
           </li>
         </ul>
